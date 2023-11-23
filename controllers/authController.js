@@ -1,9 +1,10 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 const { createJwtToken } = require("../config/generateToken");
+const { sendMail } = require("../utils/emailService");
 
 
-const login = (req, res) => {
+const login = async (req, res) => {
   const { login, password } = req.body;
 
   User.findOne({ $or: [{ email: login }, { phoneNumber: login }] })
@@ -70,7 +71,7 @@ const activate = (req, res) => {
 
   User.findOneAndUpdate({ email, otp }, { isActive: true })
     .then((user) => {
-        
+
       return res.status(200).json({
         message: "User Activation Successful",
         data: {
@@ -86,4 +87,30 @@ const activate = (req, res) => {
     });
 };
 
-module.exports = { login, activate };
+const resendEmail = async (req, res) => {
+    const { email } = req.body;
+
+    const otp = Math.floor(1000 + Math.random() * 9000).toString();
+
+    const emailOptions = {
+        to: email,
+        subject: "Welcome on Board",
+        otp
+    };
+
+    try {
+        await sendMail(emailOptions);
+    } catch(err) {
+        console.log("Error while sending email --> " + err.message);
+        return res.status(500).send({
+            message: "Some error occurred while sending Email",
+        });
+    }
+
+    return res.status(200).send({
+        message: "Email sent Successfully",
+    });
+};
+
+
+module.exports = { login, activate, resendEmail };

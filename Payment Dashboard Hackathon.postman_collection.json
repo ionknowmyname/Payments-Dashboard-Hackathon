@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "33e85fe2-d6a7-4453-9ac3-d4368141fdf1",
+		"name": "Payment Dashboard Hackathon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14117533"
+	},
+	"item": [
+		{
+			"name": "POST Test Endpoint",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://payments-dashboard-hackathonn.onrender.com/api/v1/user/test",
+					"protocol": "https",
+					"host": [
+						"payments-dashboard-hackathonn",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Faithful\",\n    \"lastName\": \"Test\",\n    \"email\": \"faithfulolaleru09@gmail.com\",\n    \"phoneNumber\": \"+2348011111112\",\n    \"age\": \"20\",\n    \"password\": \"Test1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://payments-dashboard-hackathonn.onrender.com/api/v1/user/register",
+					"protocol": "https",
+					"host": [
+						"payments-dashboard-hackathonn",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Resend Email",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://payments-dashboard-hackathonn.onrender.com/api/v1/auth/email/resend",
+					"protocol": "https",
+					"host": [
+						"payments-dashboard-hackathonn",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"email",
+						"resend"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Activate User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"otp\": \"1234\",\n    \"email\": \"email@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://payments-dashboard-hackathonn.onrender.com/api/v1/auth/activate",
+					"protocol": "https",
+					"host": [
+						"payments-dashboard-hackathonn",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"activate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST  Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\": \"faithfulolaleru09@gmail.com\",\n    \"password\": \"Test1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://payments-dashboard-hackathonn.onrender.com/api/v1/auth/login",
+					"protocol": "https",
+					"host": [
+						"payments-dashboard-hackathonn",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

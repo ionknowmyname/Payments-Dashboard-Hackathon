@@ -1,5 +1,8 @@
 const { createTransport } = require('nodemailer');
 const nodemailer = require("nodemailer");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 
 let transporter = nodemailer.createTransport({
@@ -8,9 +11,10 @@ let transporter = nodemailer.createTransport({
   secure: false, // true for 465, false for other ports
   auth: {
     user: "faithfulolaleru09@gmail.com",
-    pass: process.env.BREVO_PASS,
+    pass: process.env.BREVO_PASS, 
   },
 });
+
 
 const sendMail = async (mailOptions) => {
   // send mail with defined transport object
