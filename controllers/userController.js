@@ -83,35 +83,6 @@ const create = async (req, res) => {
 
 
 
-
-const leaderboard = async (req, res) => {
-
-    let leaderboard = [];
-
-    try {
-        leaderboard = await User.find({}, 'username email totalScore timesPlayed')
-            .sort({ totalScore: -1 }) // Sort in descending order based on totalScore
-            .limit(10);
-
-        res.status(200).json({  
-            message: "Leaderboard retrieved successfully",
-            data: {
-                leaderboard
-            },
-        });
-
-    } catch (err) {
-        console.log("Error while fetching leaderboard --> " + err.message);
-
-        res.status(500).send({
-            message: "Some error occurred while fetching leaderboard",
-        });
-    }
-};
-
-
-
 module.exports = {
-    create,
-    leaderboard
+    create
 };

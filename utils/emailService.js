@@ -17,16 +17,28 @@ let transporter = nodemailer.createTransport({
 
 
 const sendMail = async (mailOptions) => {
-  // send mail with defined transport object
-  let info = await transporter.sendMail({
-    from: "faithfulolaleru09@gmail.com",
-    to: mailOptions.to,
-    subject: mailOptions.subject,
-    // text: "Hello, Use {{ mailOptions.otp }} to Validate your account",
-    html: `<p>Hello, Use ${mailOptions.otp} to Validate your account</p>`,
-  });
 
-  const toTest = {
+    let html = "";
+
+    switch (mailOptions.reason) {
+      case "Customer":
+        html = "You have Successfully added a new Customer to your profile";
+        break;
+
+      default:
+        html = `<p>Hello, Use ${mailOptions.otp} to Validate your account</p>`;
+        break;
+    }
+    
+    let info = await transporter.sendMail({
+        from: "faithfulolaleru09@gmail.com",
+        to: mailOptions.to,
+        subject: mailOptions.subject,
+        // text: "Hello, Use {{ mailOptions.otp }} to Validate your account",
+        html,
+    });
+
+  /* const toTest = {
     from: "faithfulolaleru09@gmail.com",
     to: mailOptions.to,
     subject: mailOptions.subject,
@@ -34,7 +46,7 @@ const sendMail = async (mailOptions) => {
     html: `<p>Hello, Use ${mailOptions.otp} to Validate your account</p>`,
   };
 
-  console.log("Check what's entering sendMail in emailService --> " + JSON.stringify(toTest));
+  console.log("Check what's entering sendMail in emailService --> " + JSON.stringify(toTest)); */
 
   console.log("Message sent --> %s", info.messageId);
   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
