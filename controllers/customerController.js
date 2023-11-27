@@ -41,7 +41,7 @@ const create = async (req, res) => {
             });
         }
 
-        const customer = new Customer({
+        const customer2 = new Customer({
             ownerId,
             firstName,
             lastName,
@@ -52,7 +52,7 @@ const create = async (req, res) => {
         let createdCustomer;
 
         try {
-            createdCustomer = await customer.save();
+            createdCustomer = await customer2.save();
         } catch(err) {
             console.log("Error while Adding Customer --> " + err.message);
             return res.status(500).send({
