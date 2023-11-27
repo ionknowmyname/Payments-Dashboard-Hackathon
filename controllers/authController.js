@@ -66,25 +66,27 @@ const login = async (req, res) => {
     });
 };
 
-const activate = (req, res) => {
+const activate = async (req, res) => {
   const { otp, email } = req.body;
 
-  User.findOneAndUpdate({ email, otp }, { isActive: true })
-    .then((user) => {
-
-      return res.status(200).json({
-        message: "User Activation Successful",
-        data: {
-          user
-        },
-      });
-    })
-    .catch((err) => {
-      console.log("Error while activating User --> " + err.message);
-      return res.status(404).send({
+  const foundUser = await User.findOne({ email, otp }); 
+  
+  if (!foundUser) { 
+    return res.status(404).send({
         message: "Unable to Activate User, Try Again",
-      });
     });
+  }
+
+  foundUser.isActive = true;
+
+  const updatedUser = foundUser.save();
+
+  return res.status(200).json({
+    message: "User Activation Successful",
+    data: {
+      user: updatedUser,
+    },
+  });
 };
 
 const resendEmail = async (req, res) => {
