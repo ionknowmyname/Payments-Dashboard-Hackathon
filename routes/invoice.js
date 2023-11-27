@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const customers = require("../controllers/customerController");
+const invoice = require("../controllers/invoiceController");
 const { authenticate } = require("../config/authentication");
 
 
-router.post("/create", authenticate, customers.create);
+router.post("/create", authenticate, invoice.create);
 
 
 module.exports = router;

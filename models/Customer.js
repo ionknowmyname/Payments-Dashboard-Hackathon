@@ -7,15 +7,15 @@ const customerSchema = new Schema(
       type: String,  // ObjectId
       required: true,
     },
-    fullName: {
+    firstName: {
       type: String,
       required: true,
     },
-    businessName: {
+    lastName: {
       type: String,
       required: true,
     },
-    businessEmail: {
+    email: {
       type: String,
       required: true,
       unique: true,
@@ -24,16 +24,17 @@ const customerSchema = new Schema(
         "Please Enter a valid email",
       ],
     },
-    businessNumber: {
+    phoneNumber: {
       type: String,
       required: true,
       // unique: true,
       match: [/^\+(?:[0-9] ?){12}[0-9]$/, "Please Enter a valid Phonenumber"],
     },
-    businessAddress: {
+    addressId: {
       type: String,
       //  required: true,
     },
+
   },
   { timestamps: true }
 );
