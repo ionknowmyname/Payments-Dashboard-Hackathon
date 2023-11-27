@@ -1,5 +1,5 @@
 const Invoice = require("../models/Invoice");
-const { generateRandomString } = require("../utils/AppUtil");
+const { generateRandomString } = require("../utils/appUtil2");
 
 const create = async (req, res) => {
 
