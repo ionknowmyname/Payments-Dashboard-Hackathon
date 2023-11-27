@@ -34,7 +34,7 @@ const create = async (req, res) => {
       addressType
     } = req.body;
 
-    await Customer.findOne({ businessEmail: email }).then(async (customer) => {
+    await Customer.findOne({ email }).then(async (customer) => {
         if (customer) {
             return res.status(400).json({
                 message: "Customer already exist for Owner",
